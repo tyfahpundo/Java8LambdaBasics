@@ -17,7 +17,11 @@ class Employee{
 public class Demo2 {
     public static void main(String[] args) {
         Employee emp = new Employee("Tafadzwa",50000,7);
+        int a[] = {2,6,5,15,10,50,76,77,82,90,23,45,55};
         //I want an employee whose salary is> 30k and experience > 3
+        Predicate<Integer> p1 = i -> i%2==0;
+        Predicate<Integer> p2 = i -> i>50;
+
         Predicate<Employee> em = e -> (e.salary > 30000 && e.experience > 3);
 
         System.out.println(em.test(emp));
@@ -32,6 +36,11 @@ public class Demo2 {
         for(Employee e: al){
             if(em.test(e)){
                 System.out.println(e.name+" "+"$"+e.salary+" "+e.experience+"years experience");
+            }
+        }
+        for(int b: a){
+            if(p1.and(p2).test(b)){
+                System.out.println(b);
             }
         }
     }
