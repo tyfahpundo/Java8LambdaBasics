@@ -2,6 +2,7 @@ package functions;
 
 import java.util.ArrayList;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 class Employee{
     String name;
@@ -29,10 +30,15 @@ public class Demo {
             }else
                 return (sal * 40/100);
         };
+        Predicate<Integer> p = b -> b>5000;
+
         for(Employee emp: emplist){
             int bonus = fn.apply(emp);
-            System.out.println(emp.name+" "+emp.salary);
-            System.out.println("The bonus is: "+bonus);
+
+            if(p.test(bonus)){
+                System.out.println(emp.name+" "+emp.salary);
+                System.out.println("The bonus is: "+bonus);
+            }
         }
     }
 }
